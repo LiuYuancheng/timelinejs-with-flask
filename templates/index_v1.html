@@ -33,6 +33,7 @@
     <!-- JavaScript-->
     
     <script>
+   var dataJson = {{posts|tojson}}
 	 var options = {
 		hash_bookmark: true,
 		scale_factor: 1,
@@ -43,7 +44,7 @@
 		timenav_position: "bottom",
 		language: "en"
 	  }
-      var timeline = new TL.Timeline('tl-timeline', '{{ url_for('static', filename='data/events.json') }}', options);
+      var timeline = new TL.Timeline('tl-timeline', dataJson, options);
       window.onresize = function(event) {
       	timeline.updateDisplay();
       }
