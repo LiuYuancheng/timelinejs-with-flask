@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Example timeline</title>
+    <title>event timeline</title>
     <meta charset="utf-8">
     <meta name="description" content="TimelineJS Embed">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-touch-fullscreen" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <!-- CSS-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/timeline.css') }}?v1">
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
     <!--FONT-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts/font.default.css') }}?v1"> 
+
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
     <!-- Style-->
     <style>
       html, body {
@@ -30,19 +29,21 @@
     -->
   </head>
   <body>
-    <div id="timeline"></div>
+    <div id="tl-timeline"></div>
     <!-- JavaScript-->
-    <script src="{{ url_for('static', filename='js/timeline.js') }}"></script>
+    
     <script>
 	 var options = {
 		hash_bookmark: true,
 		scale_factor: 1,
+    font: "default",
 		//ga_property_id: null,
 		//is_full_embed: true,
+    default_bg_color: {r:200, g:200, b:200},
 		timenav_position: "bottom",
-		language: "nl"
+		language: "en"
 	  }
-      var timeline = new TL.Timeline('timeline', '{{ url_for('static', filename='data/events.json') }}', options);
+      var timeline = new TL.Timeline('tl-timeline', '{{ url_for('static', filename='data/events.json') }}', options);
       window.onresize = function(event) {
       	timeline.updateDisplay();
       }
